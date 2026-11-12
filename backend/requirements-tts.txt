@@ -1,0 +1,2 @@
+# Text-to-Speech dependencies (optional enhancement)
+pyttsx3>=2.90

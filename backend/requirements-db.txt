@@ -1,0 +1,5 @@
+# Database and ORM dependencies
+# NOTE: pyproject.toml is the canonical dependency source; keep this file in sync.
+# Sync SQLAlchemy over SQLite (WAL). No aiosqlite - async engine is a P2 option.
+sqlalchemy>=2.0
+alembic>=1.13

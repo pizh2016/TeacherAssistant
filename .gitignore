@@ -1,0 +1,45 @@
+# 依赖目录
+node_modules/
+.venv/
+.pytest_cache/
+pythonenv/
+
+# 构建产物
+dist/
+dist-ssr/
+build/
+release/
+generated/
+
+# Python 构建/安装产物
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg-link
+.eggs/
+
+# pip 安装前缀误配会泄露到源码目录的产物（防再次发生）
+backend/Lib/
+backend/include/
+
+# 后端运行期数据与前端部署产物（本地生成，不入库）
+backend/data/
+backend/logs/
+backend/static/
+backend/runtime/
+*.log.*
+
+wechat-article/
+
+# 编辑器配置
+.vscode/
+.idea/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志
+*.log
+npm-debug.log*
+.env

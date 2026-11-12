@@ -1,0 +1,4 @@
+# Authentication dependencies
+# NOTE: pyproject.toml is the canonical dependency source; keep this file in sync.
+# MVP uses pairing-code login (JWT only) - no password hashing, so no passlib/bcrypt.
+python-jose[cryptography]>=3.3

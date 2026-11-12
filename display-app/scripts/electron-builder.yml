@@ -1,0 +1,70 @@
+# electron-builder 打包配置（位于 display-app/scripts/ 目录）
+#
+# 大屏端为纯客户端应用，后端独立部署在远程服务器。
+# 后端 URL 由用户在首次启动时通过 UI 配置（localStorage 持久化）。
+#
+# 安装后目录结构：
+#   C:\Program Files\pishushu\classroom-horn\
+#   ├── resources/
+#   │   └── app.asar                    # 前端打包文件（大屏端 React SPA）
+#   ├── classroom-horn.exe              # 主程序入口（大屏端）
+#   └── Uninstall classroom-horn.exe    # 卸载程序
+#
+# 使用方法：
+#   .\scripts\build_electron.ps1
+#   .\scripts\build_electron.ps1 -Clean
+#   npx electron-builder --config scripts/electron-builder.yml --win
+
+appId: com.pishushu.classroom-horn
+productName: "classroom-horn"
+
+# 版权信息
+copyright: "Copyright © 2026 pishushu"
+
+# 构建产物输出目录
+directories:
+  output: "../release"
+
+# 使用本地已安装的 Electron 二进制（避免从网络下载）
+# 路径相对于 package.json 所在目录（display-app/）
+electronDist: "./node_modules/electron/dist"
+
+# 打包到 asar 的文件（仅包含前端 SPA + Electron 主进程 + package.json）
+# 路径相对于 app 目录（即 display-app/，package.json 所在位置）
+files:
+  - "dist/**/*"                        # Vite 构建产物（大屏端 SPA）
+  - "electron/**/*"                    # Electron 主进程代码
+  - "!electron/**/*.map"               # 排除 source map
+  - "package.json"
+
+# Windows 打包配置
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+    - target: portable
+      arch:
+        - x64
+  icon: "dist/icons/app.png"
+  requestedExecutionLevel: "asInvoker"
+
+# NSIS 安装程序配置
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: "classroom-horn"
+  installerLanguages:
+    - zh_CN
+    - en_US
+  deleteAppDataOnUninstall: false
+  artifactName: "Classroom-Horn-Setup-${version}.${ext}"
+
+# Portable 模式配置（免安装版）
+portable:
+  artifactName: "Classroom-Horn-Portable-${version}.${ext}"
+
+# asar 打包配置
+asar: true

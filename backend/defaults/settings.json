@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "updated_at": "2026-10-16T00:00:00Z",
+
+  "app": {
+    "name": "Classroom Horn",
+    "version": "0.2.0",
+    "debug": true
+  },
+
+  "server": {
+    "host": "0.0.0.0",
+    "port": 18800
+  },
+
+  "database": {
+    "url": "sqlite:///./data/classroom_horn.db"
+  },
+
+  "auth": {
+    "jwt_algorithm": "HS256",
+    "access_token_expire_minutes": 30
+  },
+
+  "ws": {
+    "heartbeat_interval": 30,
+    "max_reconnect_attempts": 5,
+    "join_timeout": 10
+  },
+
+  "cors": {
+    "origins": "*"
+  }
+}

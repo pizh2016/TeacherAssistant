@@ -1,0 +1,33 @@
+/* 大屏端全局样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* Electron 全屏时禁止选中文字 */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  background: #0f0c29;
+  color: #eee;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 禁止 Electron 窗口中的拖拽 */
+body {
+  -webkit-app-region: no-drag;
+}
+
+/* 输入框中允许选中 */
+input, textarea {
+  user-select: text;
+  -webkit-user-select: text;
+}

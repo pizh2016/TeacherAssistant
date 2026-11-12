@@ -1,0 +1,6 @@
+# Build tools
+# NOTE: pyproject.toml is the canonical dependency source; keep this file in sync.
+# PyInstaller removed: using pythonenv + .pyc compilation instead.
+wheel>=0.42
+build>=1.2
+twine>=5.0
